@@ -19,8 +19,25 @@ if(changeScreen == 1){
 }
 
 if(changeScreen == 2){
+  stroke(0);
   background(150);
- text("first 1232one",width/2,height/2); 
+  fill(255);
+   rect(56,100,150,100);
+   fill(0);
+   text("BINARY",110,155);
+   fill(255);
+   rect(56,250,150,100);
+    fill(0);
+     text("DECIMAL",105,305);
+   fill(255);
+   rect(385,100,150,100);
+    fill(0);
+     text("HEXA-DECIMAL",420,155);
+   fill(255);
+   rect(385,250,150,100);
+    fill(0);
+     text("OCTAL",440,305);
+
   
 }
 if(changeScreen == 3){
