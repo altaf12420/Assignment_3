@@ -1,4 +1,6 @@
-int changeScreen; 
+int changeScreen;
+int[] range = new int[5];
+int[] numbers = new int[10];
 void settings() {
   size(600, 600);
 }
@@ -22,17 +24,32 @@ void draw() {
   }
   if (changeScreen == 4) {
     bingoScreen();
+    for(int i = 0; i < range.length; i++) {
+      range[i] = i*10 + 10;
+    text(range[i]-9 + " - " + range[i], 200+i*50, 150);
+    for(int j = 0; j < numbers.length; j++) {
+      numbers[j] = range[i]-j;
+      text(numbers[j], 200+i*50, 200+j*20);
+    }
+  }
   }
 }
 
 
 void mousePressed() {
-  if (mousePressed) {
+  //if(changeScreen ==1 ){
+  
+  
     changeScreen += 1;
+ // }
+    //if (changeScreen == 2 & mouseX == 98 & mouseY == 185){
+     // changeScreen = 3;
+      
+   // }
     if ( changeScreen == 5) {
       changeScreen = 1;
     }
-  }
+
 }
 
 
