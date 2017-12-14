@@ -37,15 +37,27 @@ void draw() {
 
 
 void mousePressed() {
-  //if(changeScreen ==1 ){
+  if(changeScreen ==1 ){
   
   
     changeScreen += 1;
- // }
-    //if (changeScreen == 2 & mouseX == 98 & mouseY == 185){
-     // changeScreen = 3;
+  }
+    if (changeScreen == 2 & mouseX >= 53 & mouseX <= 205 & mouseY >= 100 & mouseY <=200 ){
+     changeScreen = 3;
       
-   // }
+    }
+    if (changeScreen == 2 & mouseX >= 520 & mouseX <= 569 & mouseY >= 20 & mouseY <=70 ){
+     changeScreen = 1;
+      
+    }
+    if (changeScreen == 3 & mouseX >= 520 & mouseX <= 569 & mouseY >= 20 & mouseY <=70 ){
+     changeScreen = 2;
+      
+    }
+    if (changeScreen == 4 & mouseX >= 520 & mouseX <= 569 & mouseY >= 20 & mouseY <=70 ){
+     changeScreen = 3;
+      
+    }
     if ( changeScreen == 5) {
       changeScreen = 1;
     }
@@ -61,10 +73,13 @@ void titleScreen() {
 }
 
 void numberSystemOptions() {
+  
+ 
   textSize(12);
   stroke(0);
   background(150);
   fill(255);
+  rect(519,21,50,50);
   rect(56, 100, 150, 100);
   fill(0);
   text("BINARY", 110, 155);
@@ -85,6 +100,7 @@ void numberSystemOptions() {
 void settingsOptions() {
   background(150);
   fill(255);
+  rect(519,21,50,50);
   rect(56, 100, 150, 100);
   fill(0);
   text("# of cards", 110, 155);
@@ -105,6 +121,7 @@ void settingsOptions() {
 void bingoScreen() {
   background(150);
   fill(255);
+  rect(519,21,50,50);
   rect(140, 517, 320, 50);
   fill(0);
   text("SAVE", 275, 545);
