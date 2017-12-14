@@ -1,4 +1,5 @@
 int changeScreen; 
+color highlight;
 void settings() {
   size(600, 600);
 }
@@ -9,35 +10,61 @@ void setup() {
 }
 
 void draw() {
+
   println(mouseX, mouseY);
-  if (changeScreen == 1) {
+
+  switch(changeScreen) {
+  case 1:
     titleScreen();
+    break;
+  case 2:
+    numberSystemOptions();
+    break;
+  case 3:
+    settingsOptions();
+    break;
+  case 4:
+    bingoScreen();
+    shuffler();
+    break;
   }
 
-  if (changeScreen == 2) {
-    numberSystemOptions();
-  }
-  if (changeScreen == 3) {
-    settingsOptions();
-  }
-  if (changeScreen == 4) {
-    bingoScreen();
+  //Buttons for navigation:
+
+  for (int i = 0; i < 4; i++) {
+
+    if (mouseX > i*150 && mouseX < i*150+150 && mouseY > height-50 && mouseY < height) {
+      highlight = #adccff;
+    } else highlight = #ffffff;
+    if (mousePressed == true) {
+      if (mouseX > i*150 && mouseX < i*150+150 && mouseY > height-50 && mouseY < height) {
+        changeScreen = i+1;
+      }
+    }
+    fill(highlight);
+    rect(i*150, height-50, 150, 50);
+    
+    textAlign(CENTER);
+    textSize(15);
+    fill(0);
+    text("Home",75, height-20);
+    text("Change Base", 150 + 75, height-20);
+    text("Settings", 300 + 75, height-20);
+    text("GENERATE", 450 + 75, height-20);
   }
 }
+
+
+
 
 
 void mousePressed() {
-  if (mousePressed) {
-    changeScreen += 1;
-    if ( changeScreen == 5) {
-      changeScreen = 1;
-    }
-  }
 }
 
 
+
 void titleScreen() {
-  background(150);
+  background(80);
   textSize(36);
   fill(255);
   text("Bingo Creator", 190, height/2);
