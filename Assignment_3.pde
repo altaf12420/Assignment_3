@@ -15,7 +15,7 @@ void setup() {
 
 
 void draw() {
-
+/*
   textFont(mono);
   switch(changeScreen) {
   case 1:
@@ -51,7 +51,7 @@ void draw() {
     if (changeScreen == i+1) {
       fill(#317ef9);
     }
-    rect(i*150, height-50, 150, 50, 10);
+    rect(i*150, height-40, 150, 70, 10);
 
     textAlign(CENTER);
     textSize(15);
@@ -61,6 +61,12 @@ void draw() {
     text("Settings", 300 + 75, height-20);
     text("GENERATE", 450 + 75, height-20);
   }
+  */
+  putThisSomewhere();
+  println(numbers);
+  numbers = shuffle(numbers, 15);
+  println(numbers);
+  noLoop();  
 }
 
 
