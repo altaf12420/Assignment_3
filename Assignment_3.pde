@@ -78,28 +78,34 @@ void titleScreen() {
 }
 
 float splitOctal;
-float AccOctal = .25;
-float EaseOctal = 1.05;
+float accOctal = .25;
+float easeOctal = 1.05;
 float splitDecimal;
-float AccDecimal = .25;
-float EaseDecimal = 1.05;
+float accDecimal = .25;
+float easeDecimal = 1.05;
 float splitHexadecimal;
-float AccHexadecimal = .25;
-float EaseHexadecimal = 1.05;
+float accHexadecimal = .25;
+float easeHexadecimal = 1.05;
+float splitBinary;
+float accBinary = .25;
+float easeBinary = 1.05;
 
 int move;
+
+color numberSystemsBackground = #3D4C53;
+
 void numberSystemOptions() {
-  background(#3D4C53);
+  background(numberSystemsBackground);
   strokeWeight(15);
   fill(#FFFFFF);
 
   text("Octal", 400+splitOctal, 400+splitOctal);
 
-  text("Decimal", 200, 400);
+  text("Decimal", 200-splitDecimal, 400+splitDecimal);
 
-  text("Hedecimal", 200, 200);
+  text("Hexadecimal", 200-splitHexadecimal, 200-splitHexadecimal);
 
-  text("Binary", 400, 200);
+  text("Binary", 400+splitBinary, 200-splitBinary);
 
   strokeCap(SQUARE);
 
@@ -110,78 +116,89 @@ void numberSystemOptions() {
   for (int i = 0; i < 4; i++) {
     rotate(radians(i*90));
     switch(i) {
+
     case 0:
       stroke(#E64A45);
       if (dist(mouseX, mouseY, 300, 300) < 250 && mouseX > 300 && mouseY > 300) {
-      fill(#FFFFFF, 40);
-      AccOctal = AccOctal * EaseOctal;
-      splitOctal += AccOctal;
-      if (splitOctal >= 20) {
-        AccOctal = 0;
+        if (mousePressed)
+          numberSystemsBackground = #E64A45;
+        fill(#FFFFFF, 40);
+        accOctal = accOctal * easeOctal;
+        splitOctal += accOctal;
+        if (splitOctal >= 20) {
+          accOctal = 0;
+        }
+      } else {
+        fill(#FFFFFF, 10);
+        splitOctal = 0;
+        accOctal = 1;
       }
-    } else {
-      fill(#FFFFFF, 10);
-      splitOctal = 0;
-      AccOctal = 1;
-    }
-    arc(splitOctal, splitOctal, 500, 500, radians(0), radians(90));
+      arc(splitOctal, splitOctal, 500, 500, radians(0), radians(90));
       break;
+
     case 1:
       stroke(#4DB3B3);
       if (dist(mouseX, mouseY, 300, 300) < 250 && mouseX < 300 && mouseY > 300) {
-      fill(#FFFFFF, 40);
-      AccDecimal = AccDecimal * EaseDecimal;
-      splitDecimal += AccDecimal;
-      if (splitDecimal >= 20) {
-        AccDecimal = 0;
+        if (mousePressed)
+          numberSystemsBackground = #4DB3B3;
+        fill(#FFFFFF, 40);
+        accDecimal = accDecimal * easeDecimal;
+        splitDecimal += accDecimal;
+        if (splitDecimal >= 20) {
+          accDecimal = 0;
+        }
+      } else {
+        fill(#FFFFFF, 10);
+        splitDecimal = 0;
+        accDecimal = 1;
       }
-    } else {
-      fill(#FFFFFF, 10);
-      splitDecimal = 0;
-      AccDecimal = 1;
-    }
-    arc(splitDecimal, splitDecimal, 500, 500, radians(0), radians(90));
+      arc(splitDecimal, splitDecimal, 500, 500, radians(0), radians(90));
       break;
-    case 2:
-      stroke(#E6772E);
-       if (dist(mouseX, mouseY, 300, 300) < 250 && mouseX < 300 && mouseY < 300) {
-      fill(#FFFFFF, 40);
-      AccHexadecimal = AccHexadecimal * EaseHexadecimal;
-      splitHexadecimal += AccHexadecimal;
-      if (splitHexadecimal >= 20) {
-        AccHexadecimal = 0;
-      }
-    } else {
-      fill(#FFFFFF, 10);
-      splitHexadecimal = 0;
-      AccHexadecimal = 1;
-    }
-    arc(splitHexadecimal, splitHexadecimal, 500, 500, radians(0), radians(90));
-      break;
-    case 3:
-      stroke(#F2C249);
-       if (dist(mouseX, mouseY, 300, 300) < 250 && mouseX > 300 && mouseY > 300) {
-      fill(#FFFFFF, 40);
-      AccOctal = AccOctal * EaseOctal;
-      splitOctal += AccOctal;
-      if (splitOctal >= 20) {
-        AccOctal = 0;
-      }
-    } else {
-      fill(#FFFFFF, 10);
-      splitOctal = 0;
-      AccOctal = 1;
-    }
-    arc(splitOctal, splitOctal, 500, 500, radians(0), radians(90));
-      break;
-    }
 
+    case 2:
+      stroke(#F2C249);
+      if (dist(mouseX, mouseY, 300, 300) < 250 && mouseX > 300 && mouseY < 300) {
+        if (mousePressed)
+          numberSystemsBackground = #F2C249;
+        fill(#FFFFFF, 40);
+        accBinary = accBinary * easeBinary;
+        splitBinary += accBinary;
+        if (splitBinary >= 20) {
+          accBinary = 0;
+        }
+      } else {
+        fill(#FFFFFF, 10);
+        splitBinary = 0;
+        accBinary = 1;
+      }
+      arc(splitBinary, splitBinary, 500, 500, radians(0), radians(90));
+      break;
+
+    case 3:
+      stroke(#E6772E);
+      if (dist(mouseX, mouseY, 300, 300) < 250 && mouseX < 300 && mouseY < 300) {
+        if (mousePressed)
+          numberSystemsBackground = #E6772E;
+        fill(#FFFFFF, 40);
+        accHexadecimal = accHexadecimal * easeHexadecimal;
+        splitHexadecimal += accHexadecimal;
+        if (splitHexadecimal >= 20) {
+          accHexadecimal = 0;
+        }
+      } else {
+        fill(#FFFFFF, 10);
+        splitHexadecimal = 0;
+        accHexadecimal = 1;
+      }
+      arc(splitHexadecimal, splitHexadecimal, 500, 500, radians(0), radians(90));
+      break;
+    }
   }
   popMatrix();
 }
 
 void settingsOptions() {
-  background(150);
+  background(numberSystemsBackground);
   fill(255);
   rect(519, 21, 50, 50);
   rect(56, 100, 150, 100);
@@ -202,7 +219,7 @@ void settingsOptions() {
 }
 
 void bingoScreen() {
-  background(150);
+  background(numberSystemsBackground);
   fill(255);
   rect(519, 21, 50, 50);
   rect(140, 517, 320, 50);
