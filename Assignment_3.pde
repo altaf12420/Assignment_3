@@ -10,12 +10,13 @@ void settings() {
 
 void setup() {
   mono = createFont("SG_Alternative_High-Alt.otf", 32);
+  putThisSomewhere();
   changeScreen = 1;
 }
-
+boolean happenOnce;
 
 void draw() {
-/*
+
   textFont(mono);
   switch(changeScreen) {
   case 1:
@@ -29,7 +30,6 @@ void draw() {
     break;
   case 4:
     bingoScreen();
-    shuffler();
     break;
   }
 
@@ -61,19 +61,12 @@ void draw() {
     text("Settings", 300 + 75, height-20);
     text("GENERATE", 450 + 75, height-20);
   }
-  */
-  putThisSomewhere();
-  println(numbers);
-  numbers = shuffle(numbers, 15);
-  println(numbers);
-  noLoop();  
-}
+  if (happenOnce) {
+    numbers = shuffle(numbers, 15);
+    happenOnce = false;
 
-
-
-
-
-void mousePressed() {
+    println(numbers);
+  }
 }
 
 void titleScreen() {
